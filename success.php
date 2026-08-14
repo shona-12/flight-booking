@@ -1,10 +1,15 @@
 <?php
 
-$name = $_POST["name"] ?? "Passenger";
+$name = trim($_POST["name"] ?? "Passenger");
+$email = trim($_POST["email"] ?? "");
 $from = $_POST["from"] ?? "";
 $to = $_POST["to"] ?? "";
-$price = $_POST["price"] ?? 0;
-$passengers = $_POST["passengers"] ?? 1;
+$price = (float)($_POST["price"] ?? 0);
+$passengers = (int)($_POST["passengers"] ?? 1);
+
+if ($passengers < 1) {
+    $passengers = 1;
+}
 
 $total = $price * $passengers;
 
@@ -12,38 +17,74 @@ $total = $price * $passengers;
 
 <!DOCTYPE html>
 <html>
+
 <head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <title>Booking Confirmed - SkyBook</title>
+
     <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
 
-<header>
+<header class="small-header">
+
     <h1>✈️ SkyBook</h1>
+    <p>Your journey is booked!</p>
+
 </header>
 
 <div class="success">
 
-    <h2>🎉 Booking Confirmed!</h2>
+    <div class="success-icon">
+        🎉
+    </div>
 
-    <p>Thank you, <strong><?= htmlspecialchars($name) ?></strong>.</p>
+    <h2>Booking Confirmed!</h2>
 
     <p>
-        <?= htmlspecialchars($from) ?>
-        →
-        <?= htmlspecialchars($to) ?>
+        Thank you,
+        <strong><?= htmlspecialchars($name) ?></strong>.
     </p>
 
+    <?php if ($email !== ""): ?>
+
+        <p>
+            Confirmation details will be sent to
+            <strong><?= htmlspecialchars($email) ?></strong>.
+        </p>
+
+    <?php endif; ?>
+
+    <hr>
+
     <p>
-        Passengers: <?= htmlspecialchars($passengers) ?>
+        <strong>Flight</strong>
+    </p>
+
+    <h2>
+        <?= htmlspecialchars($from) ?>
+        ✈
+        <?= htmlspecialchars($to) ?>
+    </h2>
+
+    <p>
+        Passengers:
+        <strong><?= htmlspecialchars($passengers) ?></strong>
     </p>
 
     <h3>
-        Total: ₹<?= number_format($total) ?>
+        Total:
+        ₹<?= number_format($total) ?>
     </h3>
 
-    <a href="index.php">Book Another Flight</a>
+    <a href="index.php">
+        Book Another Flight
+    </a>
 
 </div>
 
