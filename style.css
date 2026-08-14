@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #f4f7fb;
+    color: #222;
+}
+
+header {
+    background: #12355b;
+    color: white;
+    text-align: center;
+    padding: 30px;
+}
+
+.search,
+.booking,
+.success {
+    width: 80%;
+    max-width: 900px;
+    margin: 40px auto;
+}
+
+.search h2 {
+    text-align: center;
+}
+
+.flight {
+    background: white;
+    margin: 20px 0;
+    padding: 25px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px #ddd;
+}
+
+.flight strong {
+    display: block;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+button {
+    background: #12355b;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.85;
+}
+
+.booking,
+.success {
+    background: white;
+    padding: 35px;
+    border-radius: 10px;
+}
+
+.booking label {
+    display: block;
+    margin-top: 15px;
+}
+
+.booking input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+}
+
+.booking button {
+    margin-top: 20px;
+}
+
+.success {
+    text-align: center;
+}
+
+.success a {
+    display: inline-block;
+    margin-top: 20px;
+    color: #12355b;
+}
